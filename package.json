@@ -28,7 +28,6 @@
     "react-dom": "^18",
     "react-fast-marquee": "^1.6.5",
     "react-hook-form": "^7.53.0",
-    "react-hook-speech-to-text": "^0.8.0",
     "react-speech-recognition": "^3.10.0",
     "react-webcam": "^7.2.0",
     "regenerator-runtime": "^0.14.1",

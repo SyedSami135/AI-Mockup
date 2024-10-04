@@ -54,13 +54,13 @@ const Dashboard = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="block mx-5 my-5 md:my-10  md:mx-20 lg:mx-40">
+      <div className="block mx-5 my-5 md:my-10  md:mx-20 lg:mx-30">
         <h2 className="font-bold  text-2xl md:text-3xl lg:text-4xl">
           Dashboard
         </h2>
         <h2 className="">Start your AI Mockup Interview</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3 my-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8 lg:grid-cols-3 my-5">
           <InterviewCards />
         </div>
       </div>
