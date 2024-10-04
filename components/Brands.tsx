@@ -39,11 +39,11 @@ const data: Data[] = [
 const Brands = () => {
     return (
 
-        <div className='text-center my-10'>
-            <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+        <div className='text-center w-full my-10'>
+            <div className="mx-auto w-full px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                 <h2 className="text-black text-2xl font-semibold">Trusted by companies of all sizes</h2>
                 <div className="py-14">
-                    <Marquee >
+                    <Marquee className=" w-full overflow-hidden" >
                         {data.map((item, i) =>
                             <div key={i} className="px-20 mt-5">
                                 <Image src={item.imgSrc} alt={item.imgSrc} width={126} height={40} className="" />
