@@ -14,9 +14,6 @@ const InterviewCards = () => {
   const { user } = useUser();
   const router= useRouter();
 
-  useEffect(() => {
-    GetInterviewData();
-  }, [user]);
   const GetInterviewData = async () => {
     if (user) {
       const result = await db
@@ -33,6 +30,9 @@ const InterviewCards = () => {
     }
   };
  
+  useEffect(() => {
+    GetInterviewData();
+  }, );
   return (
     <>
       {interViewCards.map((interview, index) => (

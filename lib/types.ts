@@ -33,3 +33,12 @@ export type FeedBack = {
   question: string; // Keep as string; if numerical, consider changing to number.
 };
 
+export type MockInterviewType = {
+  mockId: string; // UUID (string)
+  createdAt: Date; // Date of creation
+  jsonMockResp: string; // JSON response as a string
+  jobDescription: string; // Job description (string)
+  jobPosition: string; // Job title (string)
+  jobExperience: number; // Years of experience (number)
+  createdBy: string; // User ID of the creator (string)
+};

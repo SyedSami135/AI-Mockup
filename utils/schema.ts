@@ -1,11 +1,10 @@
 import {
   numeric,
-  PgArray,
   pgTable,
   serial,
   text,
   timestamp,
-  varchar,
+  varchar
 } from "drizzle-orm/pg-core";
 
 export const MockInterview = pgTable("mockInterview", {
@@ -16,8 +15,9 @@ export const MockInterview = pgTable("mockInterview", {
   jobExperience: varchar("jobExperience").notNull(),
   createdBy: varchar("createdBy").notNull(),
   createdAt: timestamp("created_at"),
-  mockId: varchar("mockId").notNull(),
+  mockId: varchar("mockId").notNull(), // Ensure this is here
 });
+
 export const UserAnswer = pgTable("userAnswer", {
   id: serial("id").primaryKey(),
   mockIdRef: text("mockId").notNull(),
@@ -29,4 +29,3 @@ export const UserAnswer = pgTable("userAnswer", {
   createdAt: timestamp("created_at"),
   rating: numeric("rating").notNull(),
 });
-

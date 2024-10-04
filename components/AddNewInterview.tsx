@@ -14,7 +14,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { IconLoader, IconMicrophone } from "@tabler/icons-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { v4 as uuidv4 } from "uuid";
 import { z } from "zod";
 import { Button } from "./ui/button";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "./ui/form";
@@ -24,6 +23,8 @@ import { Textarea } from "./ui/textarea";
 
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { v4 as uuid4 } from "uuid";
 
 const AddNewInterview = () => {
   const { user } = useUser();
@@ -70,7 +71,6 @@ List 5 Interview Questions for Job Title: "${values.jobTitle}" and Job Descripti
 
     form.reset();
   }
-
   const StoreInDB = async (
     { jobTitle, jobDescription, yearsOfExperience }: z.infer<typeof formSchema>,
     jsonResponse: any
@@ -79,20 +79,19 @@ List 5 Interview Questions for Job Title: "${values.jobTitle}" and Job Descripti
       const resp = await db
         .insert(MockInterview)
         .values({
-          mockId: uuidv4(),
           createdAt: new Date(),
+          mockId: uuid4(),
           jsonMockResp: jsonResponse,
           jobDescription,
           jobPosition: jobTitle,
-          jobExperience: yearsOfExperience,
-          createdBy: user?.id,
-        })
+          jobExperience: 'yearsOfExperience',
+          createdBy: user?.id        
+        } as any)
         .returning({ mockId: MockInterview.mockId });
       return resp;
     } catch (error) {
-      throw new Error("Something went wrong");
+      toast.error("Something went wrong");
     }
-    return null;
   };
 
   const [openDialog, setOpenDialog] = useState(false);
