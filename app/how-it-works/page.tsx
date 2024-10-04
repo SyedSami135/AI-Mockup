@@ -11,7 +11,7 @@ export default function Component() {
       <header className="bg-primary text-primary-foreground py-12 px-4 text-center">
         <h1 className="text-4xl font-bold mb-4">How Mock Interview Generator Works</h1>
         <p className="text-xl max-w-2xl mx-auto">
-          Prepare for your dream job with our AI-powered mock interview platform. Here's how it works:
+          Prepare for your dream job with our AI-powered mock interview platform. Here&apos;s how it works:
         </p>
       </header>
 
