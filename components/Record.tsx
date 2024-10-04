@@ -6,13 +6,12 @@ import { IconDeviceComputerCamera, IconMicrophone } from "@tabler/icons-react";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import useSpeechToText from "react-hook-speech-to-text";
-import { toast } from "sonner";
-import { Button } from "./ui/button";
-import WebcamComponent from "./WebCam";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
+import { toast } from "sonner";
+import { Button } from "./ui/button";
+import WebcamComponent from "./WebCam";
 // import "regenerator-runtime/runtime";
 
 interface QuestionComponentProps {
