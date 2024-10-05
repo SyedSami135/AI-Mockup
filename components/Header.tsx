@@ -34,7 +34,10 @@ const Header = () => {
     <>
       <header className="flex justify-between bg-secondary p-4 items-center  ">
         <div className=" lg:flex lg:ml-6 w-32 md:w-48">
+          <Link href={"/"}>
+          
           <Image src="/logo.svg" alt="logo" width={180} height={100} />
+          </Link>
         </div>
         <nav className="hidden md:flex ">
           <ul className="flex lg:space-x-6 space-x-4">
