@@ -1,9 +1,7 @@
-import AddNewInterview from "@/components/AddNewInterview";
 import InterviewCards from "@/components/InterviewCards";
 import Head from "next/head";
 
 const Dashboard = () => {
-
   return (
     <>
       <Head>
@@ -16,7 +14,7 @@ const Dashboard = () => {
           name="keywords"
           content="AI Interview, mock interview, interview preparation, job interview, AI-based interview platform, interview simulation, practice interview questions"
         />
-        <meta name="Sami"  />
+        <meta name="Sami" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="UTF-8" />
 

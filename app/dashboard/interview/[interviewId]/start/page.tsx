@@ -9,6 +9,7 @@ import { eq } from "drizzle-orm";
 import { useRouter } from "next/navigation";
 
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const Interview = ({ params }: any) => {
   const [questions, setQuestions] = useState<Questions[]>([]);
@@ -16,12 +17,17 @@ const Interview = ({ params }: any) => {
   const [interviewData, setInterviewData] = useState<InterViewData[]>([]);
   const [activeQuestion, setActiveQuestion] = useState(1);
   const router = useRouter();
-  useEffect(() => {
-    GetInterviewData();
-    GetAnswers();
-  }, []);
 
- 
+
+  async function MarkCompleted() {
+    await db
+      .update(MockInterview)
+      .set({ completed: true })
+      .where(eq(MockInterview.mockId, params.interviewId));
+    toast.success("Interview Completed");
+
+    return true;
+  }
 
   const GetAnswers = async () => {
     const result = await db
@@ -30,6 +36,7 @@ const Interview = ({ params }: any) => {
       .where(eq(UserAnswer.mockIdRef, params.interviewId));
     setActiveQuestion(result.length);
   };
+  GetAnswers
 
   const GetInterviewData = async () => {
     const result = await db
@@ -39,15 +46,19 @@ const Interview = ({ params }: any) => {
     setInterviewData(result);
     const jsonMockResp = JSON.parse(result[0].jsonMockResp);
     setQuestions(jsonMockResp);
-    
-   
   };
+  GetInterviewData();
 
   useEffect(() => {
-    if (activeQuestion >= 5) {
+    const markCompleted = async () => {
+      await MarkCompleted();
       router.push(`/dashboard/interview/${params.interviewId}/feedback`);
+    };
+  
+    if (activeQuestion >= 5) {
+      markCompleted();
     }
-  })
+  }, [activeQuestion]);
   return (
     <>
       <div className=" mx-5 my-5 md:my-8  md:mx-10 ">

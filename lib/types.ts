@@ -19,6 +19,7 @@ export type Result= {
   mockId: any;
   jobPosition: string;
   jobDescription: string;
+  completed?: boolean;
   createdAt: Date | null;
 }
 export type Questions = {

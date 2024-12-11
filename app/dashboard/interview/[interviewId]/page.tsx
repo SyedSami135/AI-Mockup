@@ -6,24 +6,20 @@ import { MockInterview } from "@/utils/schema";
 import { IconBulb, IconDeviceComputerCamera } from "@tabler/icons-react";
 import { eq } from "drizzle-orm";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Interview = ({ params }: any) => {
   const [interviewData, setInterviewData] = useState<InterViewData[]>([]);
-
-
-  useEffect(() => {
-    GetInterviewData();
-  }, []);
 
   const GetInterviewData = async () => {
     const result = await db
       .select()
       .from(MockInterview)
       .where(eq(MockInterview.mockId, params.interviewId));
-    
+
     setInterviewData(result);
   };
+  GetInterviewData();
 
   return (
     <>

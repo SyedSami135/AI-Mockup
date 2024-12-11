@@ -2,7 +2,6 @@ import Brands from "@/components/Brands";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
 import Newsletter from "@/components/NewsLetter";
-import Image from "next/image";
 
 export default function Home() {
   return (

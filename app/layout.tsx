@@ -6,17 +6,16 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 
 const inter = Poppins({
-  subsets: ["latin","latin-ext"],
-  display:"block",
+  subsets: ["latin", "latin-ext"],
+  display: "block",
   weight: ["300", "400", "700", "100", "500"],
 });
 
 export const metadata: Metadata = {
   title: "AI Interview Mockup App",
   description: "AI Interview Mockup App",
-  keywords: ["AI", "Interview", "Mockup", "App","InterView Preparation"],
+  keywords: ["AI", "Interview", "Mockup", "App", "InterView Preparation"],
   creator: "Syed Sami",
-  
 };
 
 export default function RootLayout({

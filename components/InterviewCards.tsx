@@ -3,14 +3,13 @@ import { Result } from "@/lib/types";
 import db from "@/utils/db";
 import { MockInterview } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
+import { IconTrash } from "@tabler/icons-react";
 import { eq } from "drizzle-orm";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "sonner";
 import AddNewInterview from "./AddNewInterview";
 import { Button } from "./ui/button";
-import { useRouter } from "next/navigation";
-import { IconDots, IconDotsCircleHorizontal, IconTrash } from "@tabler/icons-react";
-import { Delete, DeleteIcon } from "lucide-react";
-import { toast } from "sonner";
 
 const InterviewCards = () => {
   const [interViewCards, setInterViewCards] = useState<Result[]>([]);
@@ -25,6 +24,7 @@ const InterviewCards = () => {
           jobDescription: MockInterview.jobDescription,
           createdAt: MockInterview.createdAt,
           mockId: MockInterview.mockId,
+          completed: MockInterview.completed
         })
         .from(MockInterview)
         .where(eq(MockInterview.createdBy, user.id));
@@ -32,6 +32,7 @@ const InterviewCards = () => {
       setInterViewCards(result);
     }
   };
+  GetInterviewData();
 
   const DeleteInterview = async (mockId: string) => {
     try {
@@ -44,10 +45,9 @@ const InterviewCards = () => {
       toast.error("Something went wrong");
     }   
   }
- 
-  useEffect(() => {
-    GetInterviewData();
-  }, );
+
+
+
   return (
     <>
       {interViewCards.map((interview, index) => (
@@ -61,7 +61,7 @@ const InterviewCards = () => {
             > 
             <IconTrash className=" h-4 w-4 text-primary hover:text-red-500" />
             </Button>
-          <h2 className="font-semibold text-primary  w-full  text-base md:text-lg lg:text-xl">
+          <h2 className="font-semibold text-primary  w-[90%]  text-base md:text-lg lg:text-xl">
             {interview.jobPosition}
           </h2>
           <p className="md:text-base line-clamp-2 text-sm ">
@@ -76,7 +76,7 @@ const InterviewCards = () => {
           </p>
           <div className="flex justify-between mt-2 gap-3">
 
-          <Button variant={"outline"} onClick={() => router.push(`/dashboard/interview/${interview.mockId}/feedback`)} className="w-full">Feedback</Button>
+          <Button variant={"outline"} onClick={() => router.push(`/dashboard/interview/${interview.mockId}/feedback`)} disabled={!interview.completed} className="w-full disabled:cursor-not-allowed">Feedback</Button>
           <Button className="w-full" onClick={() => router.push(`/dashboard/interview/${interview.mockId}/`)}>Start</Button>
           </div>
         </div>

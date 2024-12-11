@@ -1,4 +1,5 @@
 import {
+  boolean,
   numeric,
   pgTable,
   serial,
@@ -15,6 +16,7 @@ export const MockInterview = pgTable("mockInterview", {
   jobExperience: varchar("jobExperience").notNull(),
   createdBy: varchar("createdBy").notNull(),
   createdAt: timestamp("created_at"),
+  completed: boolean("completed").default(false).notNull(),
   mockId: varchar("mockId").notNull(), // Ensure this is here
 });
 
